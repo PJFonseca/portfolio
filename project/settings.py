@@ -20,7 +20,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/6.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-do7tlv6rdq$0&_9@82b)2=x*siiqdaew$66u8jktx-xsf7_iv0'
+SECRET_KEY = 'django-insecure-e3$51%70au^r&8&8q)4x7o548yn6j0vko681vchdkstx@o+x-e'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -37,7 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'portfolio',
+    'portofolio',
 ]
 
 MIDDLEWARE = [
@@ -116,9 +116,3 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/6.0/howto/static-files/
 
 STATIC_URL = 'static/'
-
-import os
-# Pasta no servidor onde os ficheiros vão ser guardados
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-# URL pública para aceder aos ficheiros
-MEDIA_URL = '/media/'
