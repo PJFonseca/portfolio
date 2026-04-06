@@ -1,4 +1,5 @@
 from django.contrib import admin
+
 from .models import (
     Course,
     Discipline,
@@ -6,6 +7,8 @@ from .models import (
     Type_Frameworks_Level,
     Type_Frameworks_Competency,
     Type_Frameworks_Competencies_Levels,
+    Teacher,
+    Discipline_Teacher
 )
 
 class CourseAdmin(admin.ModelAdmin):
@@ -38,9 +41,21 @@ class Type_Frameworks_Competencies_LevelsAdmin(admin.ModelAdmin):
     ordering = ("Type_Frameworks_Competency", "Type_Frameworks_Level")
     search_fields = ("description",)
 
+class TeacherAdmin(admin.ModelAdmin):
+    list_display = ("name", "link")
+    ordering = ("name",)
+    search_fields = ("name",)
+
+class Discipline_TeacherAdmin(admin.ModelAdmin):
+    list_display = ("Discipline", "Teacher")
+    ordering = ("Discipline", "Teacher")
+    search_fields = ("Discipline__name", "Teacher__name")
+
 admin.site.register(Course, CourseAdmin)
 admin.site.register(Discipline, DisciplineAdmin)
 admin.site.register(Type_Framework, Type_FrameworkAdmin)
 admin.site.register(Type_Frameworks_Level, Type_Frameworks_LevelAdmin)
 admin.site.register(Type_Frameworks_Competency, Type_Frameworks_CompetencyAdmin)
 admin.site.register(Type_Frameworks_Competencies_Levels, Type_Frameworks_Competencies_LevelsAdmin)
+admin.site.register(Discipline_Teacher, Discipline_TeacherAdmin)
+admin.site.register(Teacher, TeacherAdmin)

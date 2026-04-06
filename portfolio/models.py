@@ -78,15 +78,6 @@ class Type_Frameworks_Competencies_Levels(models.Model):
     def __str__(self):
         return self.description
     
-
-class Teacher(models.Model):
-    name = models.CharField(max_length=200)
-    link = models.CharField(max_length=2000)
-    photo = models.CharField(max_length=200)
-
-    def __str__(self):
-        return self.name
-    
 class Teacher(models.Model):
     name = models.CharField(max_length=200)
     link = models.CharField(max_length=2000)
@@ -94,3 +85,10 @@ class Teacher(models.Model):
 
     def __str__(self):
         return self.name
+    
+class Discipline_Teacher(models.Model):
+    Discipline = models.ForeignKey(Discipline, on_delete=models.CASCADE, related_name='discipline_teachers')
+    Teacher = models.ForeignKey(Teacher, on_delete=models.CASCADE, related_name='discipline_teachers')
+
+    def __str__(self):
+        return f"{self.Teacher} - {self.Discipline}"
