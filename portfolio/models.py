@@ -80,9 +80,17 @@ class Type_Frameworks_Competencies_Levels(models.Model):
     
 
 class Teacher(models.Model):
-    Discipline = models.ManyToManyField(Discipline, on_delete=models.CASCADE, related_name='disciplines')
     name = models.CharField(max_length=200)
+    link = models.CharField(max_length=2000)
+    photo = models.CharField(max_length=200)
+
+    def __str__(self):
+        return self.name
     
+class Teacher(models.Model):
+    name = models.CharField(max_length=200)
+    link = models.CharField(max_length=2000)
+    photo = models.ImageField(null=True, blank=True, upload_to="media/photos/")
 
     def __str__(self):
         return self.name
