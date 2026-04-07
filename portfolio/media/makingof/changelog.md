@@ -150,11 +150,16 @@ The main entities (so far) are:
   - Photo
   - Link - Link to the profile page
 
-
 ### Certifications
-#### This table will contain all the teachers
+#### This table will contain all the certifications done
 
   - ID
+  - Code - A unique code, because I do not want to be doing code with IDs
   - Name
-  - Photo
-  - Link - Link to the profile page
+  - Description
+  - Start Data
+  - End Date
+  - Link - Link to the project page, if it exists
+  - Background Color - This is to be able to create some visual help on the website
+  - Text Color - This is to be able to create some visual help on the website
+  - Icon - Using Fontawesome icons to look nicer
