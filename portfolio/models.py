@@ -104,7 +104,7 @@ class Project(models.Model):
     def __str__(self):
         return self.name
     
-class Technology(models.Model):
+class Type_Technology(models.Model):
     code = models.CharField(max_length=200)
     name = models.CharField(max_length=200)
     description = models.TextField()
@@ -120,8 +120,8 @@ class Technology(models.Model):
 
 class Discipline_Technology(models.Model):
     Discipline = models.ForeignKey(Discipline, on_delete=models.CASCADE, related_name='discipline_technologies')
-    Technology = models.ForeignKey(Technology, on_delete=models.CASCADE, related_name='discipline_technologies')
+    Technology = models.ForeignKey(Type_Technology, on_delete=models.CASCADE, related_name='discipline_technologies')
 
 class Project_Technology(models.Model):
     Project = models.ForeignKey(Project, on_delete=models.CASCADE, related_name='project_technologies')
-    Technology = models.ForeignKey(Technology, on_delete=models.CASCADE, related_name='project_technologies')
+    Technology = models.ForeignKey(Type_Technology, on_delete=models.CASCADE, related_name='project_technologies')

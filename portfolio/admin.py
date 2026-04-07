@@ -10,7 +10,7 @@ from .models import (
     Teacher,
     Discipline_Teacher,
     Project,
-    Technology,
+    Type_Technology,
     Discipline_Technology, 
     Project_Technology,
 )
@@ -82,6 +82,6 @@ admin.site.register(Type_Frameworks_Competencies_Levels, Type_Frameworks_Compete
 #admin.site.register(Discipline_Teacher, Discipline_TeacherAdmin)
 admin.site.register(Teacher, TeacherAdmin)
 admin.site.register(Project, ProjectAdmin)
-admin.site.register(Technology, TechnologyAdmin)
+admin.site.register(Type_Technology, TechnologyAdmin)
 #admin.site.register(Discipline_Technology, DisciplineTechnologyAdmin)
 #admin.site.register(Project_Technology, ProjectTechnologyAdmin)
