@@ -92,3 +92,16 @@ class Discipline_Teacher(models.Model):
 
     def __str__(self):
         return f"{self.Teacher} - {self.Discipline}"
+
+class Project(models.Model):
+    Discipline = models.ForeignKey(Discipline, on_delete=models.CASCADE, related_name='projects')
+    name = models.CharField(max_length=200)
+    description = models.TextField()
+    date_completed = models.DateField(null=True, blank=True)
+    link = models.CharField(max_length=2000, null=True, blank=True)
+    background_color = models.CharField(max_length=20)
+    text_color = models.CharField(max_length=20)
+    icon = models.CharField(max_length=100)
+
+    def __str__(self):
+        return self.name
