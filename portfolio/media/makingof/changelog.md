@@ -29,6 +29,20 @@ The main entities (so far) are:
   - Text Color - This is to be able to create some visual help on the website
   - Icon - Using Fontawesome icons to look nicer
 
+
+### Type_Frameworks_Levels
+#### What levels exist in a framework
+  - ID
+  - Frameworkid
+  - Code - A unique code within the Frameworks, because I do not want to be doing code with IDs
+  - Name
+  - Description
+  - Value
+  - Background Color - This is to be able to create some visual help on the website
+  - Text Color - This is to be able to create some visual help on the website
+  - Icon - Using Fontawesome icons to look nicer
+  - Sort
+
 ### Type_Frameworks_Competencies
 #### What competencies does a certain framework provide. It will contain all of them
   - ID
@@ -62,8 +76,19 @@ The main entities (so far) are:
   - Start - When it started to be valid
   - End - When it ended
 
-### Competencies
-#### This will be using the SFIA framework, with levels and stuff
+### Projects
+#### This table will contain the projects done thru the course, it will be linked with disciplines
+
+  - ID
+  - Code - A unique code within the couses, because I do not want to be doing code with IDs
+  - Name
+  - Description
+  - Logo - Logo image
+  - Link - Link to the project page, if it exists
+  - Background Color - This is to be able to create some visual help on the website
+  - Text Color - This is to be able to create some visual help on the website
+  - Icon - Using Fontawesome icons to look nicer
+
 
 - Disciplines
 - Projects

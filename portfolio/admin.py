@@ -8,7 +8,8 @@ from .models import (
     Type_Frameworks_Competency,
     Type_Frameworks_Competencies_Levels,
     Teacher,
-    Discipline_Teacher
+    Discipline_Teacher,
+    Project
 )
 
 class CourseAdmin(admin.ModelAdmin):
@@ -51,6 +52,11 @@ class Discipline_TeacherAdmin(admin.ModelAdmin):
     ordering = ("Discipline", "Teacher")
     search_fields = ("Discipline__name", "Teacher__name")
 
+class ProjectAdmin(admin.ModelAdmin):
+    list_display = ("name", "link")
+    ordering = ("name",)
+    search_fields = ("name",)
+
 admin.site.register(Course, CourseAdmin)
 admin.site.register(Discipline, DisciplineAdmin)
 admin.site.register(Type_Framework, Type_FrameworkAdmin)
@@ -59,3 +65,4 @@ admin.site.register(Type_Frameworks_Competency, Type_Frameworks_CompetencyAdmin)
 admin.site.register(Type_Frameworks_Competencies_Levels, Type_Frameworks_Competencies_LevelsAdmin)
 admin.site.register(Discipline_Teacher, Discipline_TeacherAdmin)
 admin.site.register(Teacher, TeacherAdmin)
+admin.site.register(Discipline, ProjectAdmin)
