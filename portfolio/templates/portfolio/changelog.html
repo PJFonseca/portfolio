@@ -5,13 +5,33 @@
 <section>
 {% for commit in commits %}
 <article>
-    <header style="display: flex; justify-content: space-between; align-items: center;">
-        <div>
-            <h3>{{ commit.commit.message }}</h3>
-            <small>{{ commit.commit.author.date }}</small>
-        </div>
-        <small>{{ commit.commit.author.name }}</small>
-    </header>
+  <header style="display: flex; justify-content: space-between; align-items: center;">
+    <div>
+      <h3>{{ commit.commit.message }}</h3>
+      <small>{{ commit.commit.author.date }}</small>
+    </div>
+    <small>{{ commit.commit.author.name }}</small>
+  </header>
+
+  {% if commit.files %}
+  <div style="margin-top: 0.5rem;">
+    <small class="text-secondary">
+      {{ commit.stats.total }} changes &nbsp;·&nbsp;
+      <span class="text-success">+{{ commit.stats.additions }}</span> &nbsp;
+      <span class="text-danger">-{{ commit.stats.deletions }}</span> &nbsp;·&nbsp;
+      {{ commit.files|length }} file(s)
+    </small>
+    <ul style="margin-top: 0.25rem; font-size: 0.8rem; color: #888;">
+      {% for file in commit.files %}
+      <li>{{ file.filename }} &nbsp;
+        <span class="text-success">+{{ file.additions }}</span>
+        <span class="text-danger">-{{ file.deletions }}</span>
+      </li>
+      {% endfor %}
+    </ul>
+  </div>
+  {% endif %}
+
 </article>
 {% endfor %}
 </section>
