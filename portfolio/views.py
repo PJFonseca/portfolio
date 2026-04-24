@@ -1,16 +1,13 @@
 import requests
 import json
 import os
-from django.shortcuts import render
 from django.conf import settings
+from django.shortcuts import render, redirect, get_object_or_404
 
 
 CACHE_FILE = os.path.join(settings.BASE_DIR, 'changelog_cache.json')
 
-# Create your views here.
-
-from .models import Discipline
-
+from .models import Discipline, Course
 
 def index_view(request):
     return render(request, 'portfolio/index.html')
@@ -18,6 +15,55 @@ def index_view(request):
 def disciplines_view(request):
     disciplines = Discipline.objects.all()
     return render(request, 'portfolio/disciplines.html', {'disciplines': disciplines})
+
+def discipline_create(request):
+    if request.method == 'POST':
+        Discipline.objects.create(
+            Course_id=request.POST['course'],
+            code=request.POST['code'],
+            name=request.POST['name'],
+            description=request.POST['description'],
+            ects=request.POST['ects'],
+            finalgrade=request.POST['finalgrade'],
+            background_color=request.POST['background_color'],
+            text_color=request.POST['text_color'],
+            icon=request.POST['icon'],
+        )
+        return redirect('disciplines')
+    
+    courses = Course.objects.all()
+    return render(request, 'portfolio/discipline_form.html', {'courses': courses, 'action': 'Create'})
+
+
+def discipline_edit(request, id):
+    discipline = get_object_or_404(Discipline, id=id)
+    
+    if request.method == 'POST':
+        discipline.Course_id = request.POST['course']
+        discipline.code = request.POST['code']
+        discipline.name = request.POST['name']
+        discipline.description = request.POST['description']
+        discipline.ects = request.POST['ects']
+        discipline.finalgrade = request.POST['finalgrade']
+        discipline.background_color = request.POST['background_color']
+        discipline.text_color = request.POST['text_color']
+        discipline.icon = request.POST['icon']
+        discipline.save()
+        return redirect('disciplines')
+    
+    courses = Course.objects.all()
+    return render(request, 'portfolio/discipline_form.html', {'discipline': discipline, 'courses': courses, 'action': 'Edit'})
+
+
+def discipline_delete(request, id):
+    discipline = get_object_or_404(Discipline, id=id)
+    
+    if request.method == 'POST':
+        discipline.delete()
+        return redirect('disciplines')
+    
+    return render(request, 'portfolio/discipline_confirm_delete.html', {'discipline': discipline})
+
 
 
 #Done with AI help :)
