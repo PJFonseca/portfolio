@@ -186,3 +186,16 @@ The main entities (so far) are:
   - Background Color - This is to be able to create some visual help on the website
   - Text Color - This is to be able to create some visual help on the website
   - Icon - Using Fontawesome icons to look nicer
+
+
+## Journal
+
+**24th April 2026**
+
+So today I worked on the CRUD for Disciplines and Projects. Basically create, edit and delete. The teacher showed a pattern with ModelForms and I followed that. Took a while to get the forms right because of the icon picker and color stuff but eventually got there.
+
+Also wanted a button to fill in dummy data for testing so I didn't have to type things manually every time. Started with it hardcoded for each form but then thought it made more sense to have it in a shared JS file. Ended up making a `form_utils.js` in static that handles the icon picker, color sync and the dummy fill for any form.
+
+Got into a bit of trouble with the GitHub API on the Changelog page. It was only returning 41 commits and then just stopping. Turns out there's a rate limit on unauthenticated requests — 60 per hour. Had to add a token to authenticate. Then managed to commit the token to the repo by accident and GitHub blocked the push straight away. Had to rewrite the git history to get rid of it and generate a new one. Won't be doing that again. Token is now in Codespaces Secrets and loaded with `os.environ.get()`.
+
+Also ran into a weird one where some tables from `models.py` just didn't exist in the database. Django kept saying no changes detected but the tables weren't there. Had to go into `dbshell` and create them manually. Not sure why that happened but it's fixed now.
